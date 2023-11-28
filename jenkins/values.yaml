@@ -1,2 +1,23 @@
+# values.yaml for Jenkins Helm chart
 
+## Service type and port
+service:
+  type: ClusterIP
+  port: 8080
+
+## Jenkins Configuration
 jenkinsUriPrefix: "/jenkins"
+
+## Kubernetes resources configurations
+resources:
+  deployment:
+    enabled: true
+    # You might add specific settings for the deployment template here
+
+  ingress:
+    enabled: true
+    # You might add specific settings for the ingress template here
+
+  service:
+    enabled: true
+    # You might add specific settings for the service template here
