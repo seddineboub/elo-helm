@@ -1,5 +1,2 @@
-# Define default values for Jenkins deployment
-# aks test
-aksIngress:
-  metadata:
-    name: "jenkins-ingress-test"
+
+jenkinsUriPrefix: "/jenkins"
