@@ -1,20 +1,40 @@
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jenkins-ingress
+  name: {{ .Values.aksIngress.metadata.name }}
   annotations:
-{{- range $key, $value := .Values.ingress.annotations }}
-    {{ $key }}: "{{ $value }}"
-{{- end }}
+    kubernetes.io/ingress.class: azure/application-gateway
 spec:
   rules:
-    - http:
-        paths:
-          - path: {{ .Values.ingress.path }}
-            pathType: Prefix
-            backend:
-              service:
-                name: jenkins-service
-                port:
-                  number: {{ .Values.service.port }}
+  - host: "jks.local"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            # name: testjenkins     
+            # name: my-local-chart-jenkins      
+            name: jenkins-service
+            port:
+              number: 8080
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vote-ingress
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - host: "vote.akstest.local"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: azure-vote-front
+            port:
+              number: 80          

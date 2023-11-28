@@ -1,13 +1,30 @@
-
 apiVersion: v1
 kind: Service
 metadata:
   name: jenkins-service
+  namespace: default
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/path:   /
+      prometheus.io/port:   '8080'
 spec:
-  selector:
-    app: jenkins
+  selector: 
+    app: jenkins-server
+  # type: ClusterIP  
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-  type: {{ .Values.service.type }}
+    - port: 8080
+      targetPort: 8080
+      nodePort: 32000
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: jenkins
+# spec:
+#   type: NodePort
+#   ports:
+#   - port: 8080
+#     targetPort: 8080
+#   selector:
+#     app: jenkins
