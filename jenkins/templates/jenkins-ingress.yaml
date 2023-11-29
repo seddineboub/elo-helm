@@ -4,15 +4,17 @@ metadata:
   name: jenkins-ingress
   annotations:
     kubernetes.io/ingress.class: azure/application-gateway
-    appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
 spec:
+  ingressClassName: azure/application-gateway
   rules:
-    - http:
-        paths:
-          - path: /jenkins
-            pathType: Prefix
-            backend:
-              service:
-                name: jenkins
-                port:
-                  number: 8080
+  - host: "40.118.172.3/jenkins"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: jenkins-service  
+            port:
+              number: 8080 
