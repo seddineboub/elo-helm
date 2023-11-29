@@ -1,5 +1,0 @@
-# Chart.yaml
-apiVersion: v2
-name: agic
-description: Application Gateway Ingress Controller (AGIC) deployment
-version: 1.0.0
