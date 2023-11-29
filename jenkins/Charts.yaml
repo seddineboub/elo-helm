@@ -1,5 +1,5 @@
 apiVersion: v2
-name: my-jenkins-chart
+name: jenkins
 description: A Helm chart for Jenkins deployment
 version: 1.0.0
 appVersion: "2.289.1"
