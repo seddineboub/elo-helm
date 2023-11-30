@@ -5,7 +5,7 @@ metadata:
   labels:
     app: myapp
 spec:
-  replicas: 3  # Adjust as needed
+  replicas: 3
   selector:
     matchLabels:
       app: myapp
@@ -15,11 +15,12 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: myapp-container
-        image: eloacrprd.azurecr.io/0.001:latest  
-        ports:
-        - containerPort: 80  
-
-
-
-
+        - name: myapp-container
+          image: eloacrprd.azurecr.io/0.001:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: NODE_ENV
+              value: "test"
+            - name: MONGO_URI
+              value: "mongodb://mongodb-service:27017/stretchshop_demo"  # Update MongoDB connection details
