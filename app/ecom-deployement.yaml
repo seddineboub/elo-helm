@@ -19,3 +19,7 @@ spec:
         image: eloacrprd.azurecr.io/0.001:latest  
         ports:
         - containerPort: 80  
+
+
+
+
