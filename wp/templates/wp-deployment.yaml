@@ -24,8 +24,8 @@ spec:
         env:
         - name: WORDPRESS_DB_HOST
           value: mariadb:3306  
-        - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
-          value: "yes"
+        - name: MYSQL_ROOT_PASSWORD
+          value: 'KTrehMk5RyHWHifL' 
         volumeMounts:
         - name: wordpress-storage
           mountPath: /var/www/html   
