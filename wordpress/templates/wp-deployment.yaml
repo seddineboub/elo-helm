@@ -24,15 +24,4 @@ spec:
               value: {{ .Values.wordpress.env.WORDPRESS_DB_USER }}
             - name: WORDPRESS_DB_PASSWORD
               value: {{ .Values.wordpress.env.WORDPRESS_DB_PASSWORD }}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: wordpress-service
-spec:
-  type: {{ .Values.wordpress.service.type }}
-  ports:
-    - port: {{ .Values.wordpress.service.port }}
-      targetPort: 80
-  selector:
-    app: wordpress
+
