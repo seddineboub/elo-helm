@@ -5,7 +5,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8080  # Port on which your service runs
-      targetPort: 8080  # Port your service listens on
+    - port: 8080   
+      targetPort: 8080   
   selector:
-    app: jenkins  # Label selector for your Jenkins pods
+    app: jenkins  

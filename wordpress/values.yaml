@@ -1,0 +1,17 @@
+wordpress:
+  image: wordpress:latest
+  service:
+    type: LoadBalancer
+    port: 80
+  env:
+    WORDPRESS_DB_HOST: mysql-wordpress
+    WORDPRESS_DB_USER: seddine
+    WORDPRESS_DB_PASSWORD: Seddine007**
+
+mysql:
+  image: mysql:latest
+  env:
+    MYSQL_ROOT_PASSWORD: Seddine007**
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: seddine
+    MYSQL_PASSWORD: Seddine007**

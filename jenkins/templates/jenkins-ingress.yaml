@@ -15,4 +15,4 @@ spec:
           service:
             name: jenkins-service  
             port:
-              number: 8080  # Replace with the port of your service
+              number: 8080   
