@@ -1,22 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: wordpress
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: wordpress
   template:
     metadata:
       labels:
-        app: mysql
+        app: wordpress
     spec:
       containers:
-      - name: mysql
-        image: mysql:latest
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: YOUR_ROOT_PASSWORD
+      - name: wordpress
+        image: wordpress:latest
         ports:
-        - containerPort: 3306
+        - containerPort: 80
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: mysql:3306
+        - name: WORDPRESS_DB_PASSWORD
+          value: SeddinePass**
