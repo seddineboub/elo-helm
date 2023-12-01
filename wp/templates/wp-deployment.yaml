@@ -12,6 +12,10 @@ spec:
       labels:
         app: wordpress
     spec:
+      volumes:
+        - name: wordpress-storage
+          persistentVolumeClaim:
+            claimName: wordpress-pvc   
       containers:
       - name: wordpress
         image: wordpress:latest
@@ -19,6 +23,9 @@ spec:
         - containerPort: 80
         env:
         - name: WORDPRESS_DB_HOST
-          value: mysql:3306
+          value: mariadb:3306  
         - name: WORDPRESS_DB_PASSWORD
-          value: SeddinePass**
+          value: SeddinePass**  
+        volumeMounts:
+        - name: wordpress-storage
+          mountPath: /var/www/html   
