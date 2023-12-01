@@ -19,8 +19,8 @@ spec:
         - containerPort: 3306
           name: mysql
         env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: ''
+        - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
+          value: "yes"
         - name: MYSQL_DATABASE
           value: wordpress
         volumeMounts:
