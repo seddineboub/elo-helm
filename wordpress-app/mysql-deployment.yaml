@@ -52,7 +52,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-pass
-              key: SeddinePass**
+              key: password
         - name: MYSQL_DATABASE
           value: wordpress
         - name: MYSQL_USER
