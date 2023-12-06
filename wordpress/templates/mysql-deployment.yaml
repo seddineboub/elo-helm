@@ -1,27 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql-wordpress
+  name: mysql-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql-wordpress
+      app: mysql
   template:
     metadata:
       labels:
-        app: mysql-wordpress
+        app: mysql
     spec:
       containers:
         - name: mysql
-          image: mysql:latest   
+          image: mysql:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: Seddine007**   
+              value: PassTest**
             - name: MYSQL_DATABASE
               value: wordpress
+            - name: MYSQL_USER
+              value: seddine
+            - name: MYSQL_PASSWORD
+              value: PassTest**
           ports:
             - containerPort: 3306
+              name: mysql
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /var/lib/mysql
@@ -29,14 +34,7 @@ spec:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
             claimName: mysql-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-wordpress-service
-spec:
-  ports:
-    - port: 3306
-      targetPort: 3306
-  selector:
-    app: mysql-wordpress
+
+
+
+

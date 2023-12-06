@@ -1,0 +1,4 @@
+apiVersion: v1
+name: wordpress 
+description: Helm chart for deploying WordPress with Mysql bound with PVCs
+version: 0.1
